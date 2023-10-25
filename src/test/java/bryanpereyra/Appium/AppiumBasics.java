@@ -17,9 +17,9 @@ public class AppiumBasics {
 		// Appium Code -> Appium Server -> Mobile
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setDeviceName("Pixel 7 Pro");
-		
-		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), null);
+		options.setApp("C:\\Users\\bryan\\Desktop\\Appium\\src\\test\\java\\resources\\ApiDemos-debug.apk");
 
+		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+		driver.quit();
 	}
-
 }
