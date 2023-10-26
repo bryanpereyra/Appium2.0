@@ -1,25 +1,30 @@
 package bryanpereyra.Appium;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.AppiumBy;
 
-public class AppiumBasics {
+public class AppiumBasics extends BaseTest {
 
 	@Test
-	public void AppiumTest() throws MalformedURLException {
+	public void WifiSettingsName() throws MalformedURLException {
 
-		// AndroidDriver object
 		// Appium Code -> Appium Server -> Mobile
-		UiAutomator2Options options = new UiAutomator2Options();
-		options.setDeviceName("Pixel 7 Pro");
-		options.setApp("C:\\Users\\bryan\\Desktop\\Appium\\src\\test\\java\\resources\\ApiDemos-debug.apk");
+		// Xpath, id, accessibilityId, className, androidUIAutomator
+		// Xpath = //tagName[@attribute='value'] or //tagName
 
-		AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-		driver.quit();
+		driver.findElement(AppiumBy.accessibilityId("Preference")).click();
+		driver.findElement(By.xpath("//android.widget.TextView[@content-desc='3. Preference dependencies']")).click();
+		driver.findElement(By.id("android:id/checkbox")).click();
+		driver.findElement(By.xpath("(//android.widget.RelativeLayout)[2]")).click();
+		String alertTitle = driver.findElement(By.id("android:id/alertTitle")).getText();
+	    Assert.assertEquals(alertTitle, "WiFi settings");
+		driver.findElement(By.id("android:id/edit")).sendKeys("Wifi Test");
+		driver.findElements(AppiumBy.className("android.widget.Button")).get(1).click();
+		
 	}
 }
