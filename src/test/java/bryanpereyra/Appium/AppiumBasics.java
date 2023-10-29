@@ -22,9 +22,9 @@ public class AppiumBasics extends BaseTest {
 		driver.findElement(By.id("android:id/checkbox")).click();
 		driver.findElement(By.xpath("(//android.widget.RelativeLayout)[2]")).click();
 		String alertTitle = driver.findElement(By.id("android:id/alertTitle")).getText();
-	    Assert.assertEquals(alertTitle, "WiFi settings");
+		Assert.assertEquals(alertTitle, "WiFi settings");
 		driver.findElement(By.id("android:id/edit")).sendKeys("Wifi Test");
 		driver.findElements(AppiumBy.className("android.widget.Button")).get(1).click();
-		
+
 	}
 }
